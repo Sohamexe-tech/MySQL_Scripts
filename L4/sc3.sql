@@ -1,0 +1,46 @@
+DROP DATABASE IF EXISTS kc_23march26;
+CREATE DATABASE kc_23march26;
+USE kc_23march26;
+
+-- Initial table
+CREATE TABLE student (
+    rno INT PRIMARY KEY,
+    name VARCHAR(10),
+    marks TINYINT
+);
+
+ALTER TABLE student 
+ADD COLUMN phone BIGINT AFTER name;
+
+ALTER TABLE student 
+ADD COLUMN location VARCHAR(50),
+ADD COLUMN acard CHAR(12);
+
+ALTER TABLE student 
+ADD COLUMN email VARCHAR(200) AFTER marks;
+
+ALTER TABLE student 
+MODIFY name VARCHAR(50) NOT NULL;
+
+ALTER TABLE student 
+MODIFY marks TINYINT UNSIGNED CHECK (marks BETWEEN 0 AND 100);
+
+ALTER TABLE student 
+MODIFY email VARCHAR(200) NOT NULL;
+
+ALTER TABLE student 
+MODIFY phone BIGINT UNSIGNED;
+
+ALTER TABLE student 
+MODIFY location VARCHAR(50) DEFAULT 'mumbai';
+
+ALTER TABLE student 
+CHANGE location address VARCHAR(50) DEFAULT 'mumbai';
+
+ALTER TABLE student 
+DROP COLUMN acard;
+
+ALTER TABLE student 
+MODIFY phone BIGINT UNSIGNED AFTER name;
+
+DESC student;

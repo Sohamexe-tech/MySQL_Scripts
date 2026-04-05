@@ -1,0 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS kc;
+
+SELECT 'schema in use' AS MSG;
+
+USE kc;
+
+SELECT 'schema in use' AS MSG;
+
+SELECT SCHEMA();
+
+DROP SCHEMA IF EXISTS kc;
+
+SELECT 'schema dropped' AS MSG;
+
+SHOW SCHEMAS;
