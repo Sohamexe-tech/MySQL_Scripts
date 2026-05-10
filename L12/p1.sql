@@ -1,0 +1,12 @@
+USE kc_db;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS p1 $$
+
+CREATE PROCEDURE p1()
+BEGIN
+SELECT 'welcome to pl/sql' AS MSG;
+END $$
+
+DELIMITER ;

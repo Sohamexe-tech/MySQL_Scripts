@@ -1,0 +1,14 @@
+USE kc_db;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS p2 $$
+
+CREATE PROCEDURE p2(IN a INT, IN b INT)
+BEGIN
+DECLARE res INT DEFAULT 0;
+SET res = a + b;
+SELECT CONCAT('res of addition =', res) AS MSG;
+END $$
+
+DELIMITER ;

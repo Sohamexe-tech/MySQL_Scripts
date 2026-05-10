@@ -1,0 +1,25 @@
+USE kc_db;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS circle_calc $$
+
+CREATE PROCEDURE circle_calc(IN r DOUBLE)
+BEGIN
+DECLARE area DOUBLE DEFAULT 0.0;
+DECLARE circum DOUBLE DEFAULT 0.0;
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+SELECT 'Error occurred' AS RESULT;
+
+IF r <= 0 THEN
+SELECT 'Invalid radius' AS RESULT;
+ELSE
+SET area = 3.14 * r * r;
+SET circum = 2 * 3.14 * r;
+SELECT CONCAT('Area=',ROUND(area,2),', Circumference=',ROUND(circum,2)) AS RESULT;
+END IF;
+
+END $$
+
+DELIMITER ;

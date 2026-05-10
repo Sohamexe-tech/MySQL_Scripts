@@ -1,0 +1,25 @@
+USE kc_db;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS rectangle_calc $$
+
+CREATE PROCEDURE rectangle_calc(IN l DOUBLE, IN b DOUBLE)
+BEGIN
+DECLARE area DOUBLE DEFAULT 0.0;
+DECLARE peri DOUBLE DEFAULT 0.0;
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+SELECT 'Error occurred' AS RESULT;
+
+IF l <= 0 OR b <= 0 THEN
+SELECT 'Invalid input' AS RESULT;
+ELSE
+SET area = l * b;
+SET peri = 2 * (l + b);
+SELECT CONCAT('Area=',ROUND(area,2),', Perimeter=',ROUND(peri,2)) AS RESULT;
+END IF;
+
+END $$
+
+DELIMITER ;
